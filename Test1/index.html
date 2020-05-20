@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="HTML , CSS , Javascript">
+	<meta name="viewport" content="width=device-width , initial-scale = 1.0 ">
+	<title>Test1</title>
+
+
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+	
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+			<h1 class="title">To-Do List</h1>
+	<div class="box">
+
+	<input type="text" class="inputbox" placeholder=" Add a task and press Enter">
+	</div>
+
+
+<script type="text/javascript">
+	
+	$(".inputbox").on("keyup",function(e){
+
+		if(e.keyCode == 13 && $(".inputbox").val() !="")
+		{
+			var task = $("<div class='task'></div>").text($(".inputbox").val());
+			var del = $("<i class ='fas fa-trash-alt'></i>").click(function(){
+				var p = $(this).parent();
+				p.fadeOut(function(){
+					p.remove();
+				});
+			});
+			var comp = $("<i class ='fas fa-check'></i>").click(function(){
+				var x = $(this).parent();
+				x.fadeIn(function(){
+					x.css('background','#38ef7d');
+					x.css('transition', 'all 0.5s');
+					x.css('color','white');x.css('border','none');
+				});
+				
+
+			});
+			task.append(del,comp);
+			$(".box").append(task);
+			$(".inputbox").val("");
+		}
+	});
+
+</script>	
+
+</body>
+</html>
